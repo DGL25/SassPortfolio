@@ -1,0 +1,124 @@
+* {
+  font-weight: lighter;
+  font-family: "Mulish", sans-serif;
+  color: #fff;
+}
+* body {
+  background: #000;
+}
+* .botao {
+  position: relative;
+  width: 345px;
+  height: 45px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(228, 143, 1, 0.25);
+  background: #E48F01;
+  text-transform: capitalize;
+  text-shadow: 0 2.5px 5px rgba(0, 0, 0, 0.25);
+  font-weight: bold;
+  font-size: 1.25em;
+  font-family: "Quicksand", sans-serif;
+  outline: none;
+  transition: 0.25s all;
+  cursor: pointer;
+}
+* .botao:hover {
+  box-shadow: 0 0 15px rgba(228, 143, 1, 0.75);
+}
+* .subtitulo {
+  font-size: 1.625em;
+  font-weight: normal;
+  font-family: "Quicksand", sans-serif;
+}
+* .subtitulo span {
+  color: #E48F01;
+  font-weight: normal;
+}
+@media (max-width: 720px) {
+  * .subtitulo {
+    font-size: 1.1785em;
+  }
+}
+* .texto-leitura {
+  font-size: 1em;
+  font-weight: lighter;
+}
+
+.container #banner {
+  position: relative;
+  height: 100vh;
+}
+@media (min-width: 1130px) {
+  .container #banner {
+    display: grid;
+    grid-template: auto;
+    place-items: center;
+    place-content: center;
+    grid-template-areas: "tituloPrincipal fotoFotografo" "subTextoBtn fotoFotografo";
+  }
+  .container #banner #tituloPrincipalBanner {
+    position: relative;
+    top: 30px;
+    left: 7px;
+  }
+  .container #banner #foto-banner {
+    margin-left: 112px;
+  }
+  .container #banner div {
+    position: relative;
+    top: -23px;
+  }
+}
+.container #banner #tituloPrincipalBanner {
+  font-family: "Quicksand", sans-serif;
+  grid-area: tituloPrincipal;
+  max-width: 577px;
+}
+.container #banner #tituloPrincipalBanner span {
+  font-weight: bold;
+  color: #E48F01;
+}
+.container #banner #foto-banner {
+  max-width: 441px;
+  grid-area: fotoFotografo;
+}
+.container #banner div {
+  grid-area: subTextoBtn;
+  max-width: 555px;
+}
+.container #banner div .texto-leitura {
+  margin: 25px 0;
+}
+.container #banner #arrow {
+  position: absolute;
+  bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 18px;
+  background: transparent url("./svg/arrow.svg") no-repeat center center;
+  background-size: cover;
+  grid-area: btnLink;
+}
+@media (max-width: 720px) {
+  .container #banner {
+    margin: 0 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .container #banner #tituloPrincipalBanner {
+    font-family: "Quicksand", sans-serif;
+    font-size: 1.9375em;
+  }
+  .container #banner #tituloPrincipalBanner span {
+    font-weight: bold;
+    color: #E48F01;
+  }
+  .container #banner #foto-banner {
+    max-width: 275px;
+  }
+}/*# sourceMappingURL=style.css.map */
