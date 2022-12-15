@@ -1,0 +1,362 @@
+@import '../../../style/myFunctions';
+
+$quicksandFont: 'Quicksand', sans-serif;
+$mulishFont: 'Mulish', sans-serif;
+
+$laranja: #E48F01;
+
+@mixin botao($width, $fontSize){
+    position: relative;
+    width: $width;height: 45px;
+    border: none;border-radius: 10px;
+    box-shadow: 0 0 10px rgb(228, 143, 1, .25);
+    background: $laranja;
+    text-transform: capitalize;text-shadow: 0 2.5px 5px rgb(0, 0, 0,.25);
+    font-weight: bold;font-size: $fontSize;font-family: $quicksandFont;
+    outline: none;
+    transition: .25s all;
+    cursor: pointer;
+
+    &:hover{box-shadow: 0 0 15px rgb(228, 143, 1, .75);}
+}
+
+@mixin botaoSec($fontSize){
+    position: relative;
+    padding: 10px 20px;
+    background: transparent;
+    border: 3px solid $laranja ;border-radius: 10px;
+    font-size: $fontSize;font-weight: bold;
+    text-shadow: 0 2.5px 5px rgb(0, 0, 0,.25);
+    transition: .25s all;
+    outline: none;
+    cursor: pointer;
+
+    &:hover{background: $laranja;box-shadow: 0 0 15px rgb(228, 143, 1, .5);}
+}
+
+*{
+    font-weight: lighter;font-family: $mulishFont;
+    color: #fff;
+
+    body{
+        background: #000;
+
+        &::-webkit-scrollbar{width: 5px}
+        &::-webkit-scrollbar-track{background: #000}
+        &::-webkit-scrollbar-thumb{background: linear-gradient(0deg, $laranja, transparent);border-radius: 10px}
+    }
+
+    .botao{
+        @include botao(345px,1.25em);
+
+        @media (max-width: 720px) {@include botao(275px, 1em);}
+    }
+
+    .botao-sec{
+        @include botaoSec(1.1875em);
+        @media (max-width: 720px) {@include botaoSec(1em);}
+    }
+
+    .titulo{
+        font-size: 2.625em;font-family: $quicksandFont;font-weight: bold;
+
+        span{color: $laranja;font-weight: bold;}
+
+        @media (max-width:720px) {font-size: 1.9375em;}
+    }
+
+    .subtitulo{
+        font-size: 1.625em;font-weight: normal;font-family: $quicksandFont;
+
+        span{color: $laranja;font-weight: normal;}
+
+        @media (max-width: 1180px) {
+            font-size: 1.1785em;
+        }
+    }
+
+    .texto-leitura{font-size: 1em;font-weight: lighter;}
+}
+
+.container{
+    overflow: hidden;
+    #banner{
+        position: relative;
+        height: 100vh;
+        
+        @media (min-width: 1180px) {
+            display: grid; grid-template: auto; place-items: center; place-content: center;
+            grid-template-areas: 'tituloPrincipal fotoFotografo'
+            'subTextoBtn fotoFotografo';
+
+            #tituloPrincipalBanner{
+                position: relative;
+                top: 30px;left: 7px;
+            }
+
+            #foto-banner{margin-left: 112px;}
+
+            div{
+                position: relative;
+                top: -23px;
+            }
+        }
+
+        #tituloPrincipalBanner{
+            font-family: $quicksandFont;span{font-weight: bold;color: $laranja;}
+            grid-area: tituloPrincipal;
+            max-width: 577px;
+        }
+
+        #foto-banner{
+            max-width: 441px;
+            grid-area: fotoFotografo;
+        }
+
+        div{
+            grid-area: subTextoBtn ;
+            max-width: 555px;
+            
+            .texto-leitura{
+                margin: 25px 0;
+            }
+        }
+
+        #arrow{
+            position: absolute;
+            bottom: 25px;
+            @include flex();
+            width: 24px;height: 18px;
+            background: transparent url('../svg/arrow.svg') no-repeat center center;background-size: cover;
+            grid-area: btnLink;
+        }
+
+        @media (max-width:1130px) {
+            margin: 0 calc(50px - 12px);
+            @include flex(); flex-direction: column;
+
+            #tituloPrincipalBanner{
+                font-family: $quicksandFont; font-size: 1.9375em;
+                span{font-weight: bold;color: $laranja;}
+            }
+
+            #foto-banner{
+                max-width: 275px;
+            }
+        }
+    }
+
+    #beneficios{
+        padding: 50px 0;
+        display: grid; grid-gap: 20px; place-items: center;
+        grid-template-columns: repeat(auto-fit, minmax(263px,1fr));
+        
+        .beneficio{
+            padding: 50px 30px;
+            margin: 0 10px;
+            width: 363px;height: 225px;
+            background: $laranja;
+            text-shadow: 0 2.5px 5px rgba(0,0,0,.25);
+            border-radius: 25px;
+            box-shadow: 0 0 10px rgb(228, 143, 1, .25);
+
+            .titulo-beneficio{
+                font-weight: bold;
+                margin-bottom: 25px;
+
+                img{
+                    margin-right: 0px;
+                    max-height: 40px;
+                }
+            }
+
+            .texto-leitura{font-weight: normal;}
+        }
+
+        @media (max-width:720px) {
+            
+            .beneficio{
+                padding: 25px;
+                width: 265px;height: 179px;
+
+                .titulo-beneficio{
+                    font-size: 1.1785em;
+                    margin-bottom: 15px;
+
+                    img{
+                        max-height: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    #memorias{
+        @include flex(); flex-direction: column;
+        >.titulo{text-align: center;max-width: 825px; margin: 25px 0 75px 0;}
+        
+        #area-memorias{
+            max-width: 1130px;
+            display: grid; grid-gap: 25px;
+            grid-template-areas: 'a b' 'a c';
+
+            @media (max-width:1130px) {
+                max-width: 325px;
+                grid-template-areas:'a b' 'c c' ;
+            }
+
+            #memoria{
+                position: relative;
+                padding: 25px 100px;
+                background: $laranja url('../img/memorias1.jpg') no-repeat center center;background-size: cover;
+                width: 375px; height: 640px;
+                border-radius: 25px;
+                grid-area: a;
+
+                
+                &::before{
+                    content: '';
+                    position: absolute;
+                    top: 0;left: 0;
+                    width: 100%;height: 100%;
+                    background: linear-gradient(0deg, #000, transparent, transparent);
+                }
+                
+                .botao-sec{
+                    top: calc(100% - 45px);
+                }
+                
+                @media (max-width:1130px) {
+                    width: 225px; height: 384px;
+                    padding: 25px 45px;
+
+                    .botao-sec{
+                        padding: 10px 12px;
+                    }
+                }
+            }
+
+            #lista-memorias{
+                padding: 0;
+                grid-area: b;
+
+                @include flex(); justify-content: space-between;
+
+                .item-memoria{
+                    background: $laranja url('../img/memorias2.jpg') no-repeat center center; background-size: cover;
+                    width: 225px;height: 384px;
+                    border-radius: 25px;
+                    cursor: pointer;
+                    
+                    &:nth-child(2){background: $laranja url('../img/memorias3.jpg') no-repeat center center; background-size: cover;margin: 0 25px;}
+                    &:nth-child(3){background: $laranja url('../img/memorias4.jpg') no-repeat center center; background-size: cover;}
+
+                    @media (max-width:1130px) {
+                        width: 175px; height: 298px;
+                    }
+                }
+            }
+
+            #textos-memoria{
+                grid-area: c;
+
+                .titulo{color: $laranja;}
+
+                .texto-leitura{
+                    margin: 25px 0 28px 0;
+                }
+
+                @media (max-width:1130px) {
+                    max-width: 325px;
+
+                    .titulo{
+                        max-width: 275px;
+                    }
+                }
+            }
+        }
+    }
+
+    #depoimentos{
+        padding: 75px 0;
+        background: url('../img/camera.png') no-repeat center right; background-size: 550px;
+        @include flex(); flex-direction: column;
+        .titulo{text-align: center;margin-bottom: 50px;}
+
+        #lista-depoimentos{
+            padding: 0;
+            display: grid; grid-gap: 50px 20px; place-items: center; 
+            grid-template-areas: 'a b'
+            'c c';
+
+            @media (max-width:1130px) {
+                grid-gap: 50px 0px;
+                grid-template-areas: 'a' 'b' 'c';
+            }
+            
+            .item-depoimentos{
+                width: 555px;
+                @include flex(); justify-content: space-between;
+                grid-area: a;
+
+                &:nth-child(2){grid-area: b;}
+                &:nth-child(3){grid-area: c;}
+
+                img{
+                    max-width: 172px;
+                }
+                .textos{
+                    display: inline;
+                    max-width: 363px;
+
+                    .subtitulo{
+                        color: $laranja;
+                        font-weight: bold;
+                        margin-bottom: 15px;
+                    }
+                }
+
+                @media (max-width:1130px) {
+                    max-width: 325px;
+                    align-items: flex-start;
+
+                    img{width: 75px;height: 75px;}
+
+                    .textos{max-width: 230px;}
+                }
+            }
+        }
+
+        #btns-slide{
+            height: 20px;
+            @include flex();
+
+            input[type='radio']{
+                appearance: none;
+                margin: 0 7.5px;
+                width: 15px;height: 15px;
+                background: transparent;
+                border: 2px solid $laranja;border-radius: 50%;
+                transition: .25s;
+                cursor: pointer;
+
+                &:checked{
+                    width: 20px;height: 20px;
+                    background: $laranja;
+                    box-shadow: 0 0 10px rgb(228, 143, 1, .5);
+                }
+            }
+        }
+    }
+
+    #contato{
+        padding: 25px 0;
+        @include flex(); flex-direction: column;
+        text-align: center;
+        .subtitulo{
+            margin: 25px 0;
+            max-width: 460px;
+            font-weight: 300;
+        }
+    }
+}
